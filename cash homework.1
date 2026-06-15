@@ -1,0 +1,44 @@
+#include <cs50.h>
+#include <stdio.h>
+
+void make_change(int quarters);
+
+int main(void)
+{
+    int value;
+    while (true)
+    {
+        // prompt user to give cash value
+        value = get_int("change owed: ");
+
+        // check for valid input
+        if (value <= 0)
+        {
+            // prompt user to give height value
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+    make_change(value);
+}
+
+// divide by quarters to get remainder
+void make_change(int change)
+{
+    int quarters = change / 25;
+    int modulo_1 = change % 25;
+    // divide by dimes and get remainder
+    int dimes = modulo_1 / 10;
+    int modulo_2 = modulo_1 % 10;
+    // divide by nickels and get remainder
+    int nickels = modulo_2 / 5;
+    int modulo_3 = modulo_2 % 5;
+    // divide by pennies and get remainder
+    int pennies = modulo_3 / 1;
+    // Add all dividions together to get coins
+    int Coins = (quarters + dimes + nickels + pennies);
+    printf(" %i\n ", Coins);
+}
